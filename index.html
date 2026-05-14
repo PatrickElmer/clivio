@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clivio — Animated Terminal SVG</title>
+<script src="clivio.js" type="module" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+<style>
+textarea {
+    font-family: monospace;
+    resize: vertical;
+}
+.grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+</style>
+</head>
+<body>
+    <main class="container">
+        <h1>Clivio</h1>
+        <p>Paste terminal lines below to generate an animated SVG.</p>
+
+        <textarea id="lines" rows="6">$ ls
+    Documents  Downloads
+    $ echo Hello
+    Hello</textarea>
+            <button id="generate">Animate</button>
+            <hr>
+        <details>
+            <summary>Options</summary>
+            <div class="grid">
+                <label>Speed (s)
+                    <input type="number" id="speed" value="0.3" step="0.1" min="0" />
+                </label>
+                <label>Pause (s)
+                    <input type="number" id="pause" value="1.5" step="0.1" min="0" />
+                </label>
+                <label>Initial pause (s)
+                    <input type="number" id="initialPause" value="0.5" step="0.1" min="0" />
+                </label>
+                <label>Width (px)
+                    <input type="number" id="width" value="600" step="10" min="100" />
+                </label>
+                <label>Font size (px)
+                    <input type="number" id="fontSize" value="20" step="1" min="8" />
+                </label>
+                <label>Padding (px)
+                    <input type="number" id="padding" value="20" step="1" min="0" />
+                </label>
+                <label>Background
+                    <input type="color" id="background" value="#151b23" />
+                </label>
+                <label>Font color
+                    <input type="color" id="fontColor" value="#ffffff" />
+                </label>
+                <label>Border radius
+                    <input type="number" id="borderRadius" value="10" step="1" min="0" />
+                </label>
+                <label>Prompt
+                    <input type="text" id="prompt" placeholder="auto-detect" />
+                </label>
+            </div>
+        </details>
+        <div id="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="600" height="140" font-family="monospace" font-size="20px" fill="#ffffff"><rect width="100%" height="100%" rx="10" fill="#151b23"></rect><g transform="scale(1) translate(20 40)"><text y="0" opacity="0" style="user-select: none;">$ <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0;0;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="24" y="0" opacity="0">l<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1039;0.1039;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="36" y="0" opacity="0">s<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1429;0.1429;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text y="25" opacity="0">Documents&nbsp;&nbsp;Downloads<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1818;0.1818;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text y="50" opacity="0" style="user-select: none;">$ <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1818;0.1818;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="24" y="50" opacity="0">e<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.4156;0.4156;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="36" y="50" opacity="0">c<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.4545;0.4545;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="48" y="50" opacity="0">h<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.4935;0.4935;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="60" y="50" opacity="0">o<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5325;0.5325;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="72" y="50" opacity="0"> <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5714;0.5714;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="84" y="50" opacity="0">H<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6104;0.6104;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="96" y="50" opacity="0">e<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6494;0.6494;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="108" y="50" opacity="0">l<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6883;0.6883;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="120" y="50" opacity="0">l<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.7273;0.7273;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text x="132" y="50" opacity="0">o<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.7662;0.7662;1;1" dur="7.7s" repeatCount="indefinite"></animate></text><text y="75" opacity="0">Hello<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.8052;0.8052;1;1" dur="7.7s" repeatCount="indefinite"></animate></text></g></svg>
+        </div>
+        <hr>
+        <button id="download">Download SVG</button>
+    </main>
+</body>
+</html>
