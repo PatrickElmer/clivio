@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Clivio — Animated Terminal SVG</title>
-<script src="clivio.js" type="module" defer></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
-<style>
-textarea {
-    font-family: monospace;
-    resize: vertical;
-}
-.grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clivio — Animated Terminal SVG</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="clivio.js" type="module" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <style>
+        :root {
+            --pico-form-element-spacing-vertical: 0.5rem;
+            --pico-form-element-spacing-horizontal: 0.4rem;
+        }
+        .grid input {
+            margin-bottom: 5px;
+        }
+        .grid label {
+            margin: auto 0px;
+        }
+        #svg-field {
+            position: relative;
+            width: fit-content;
+        }
+        #download {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            width: 2em;
+            height: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #copy {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            z-index: 10;
+            width: 2em;
+            height: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <main class="container">
