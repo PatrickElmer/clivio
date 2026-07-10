@@ -191,16 +191,6 @@ $("generate").addEventListener("click", () => {
         const container = $("svg-container")
         container.innerHTML = svg
 
-        $("download").onclick = () => {
-            const blob = new Blob([svg], { type: "image/svg+xml" })
-            const a = Object.assign(document.createElement("a"), {
-                href: URL.createObjectURL(blob),
-                download: "terminal.svg",
-            })
-            a.click()
-            URL.revokeObjectURL(a.href)
-        }
-
         $("output").style.display = "block"
         $("output").scrollIntoView({ behavior: "smooth", block: "start" })
     } catch (e) {
@@ -208,3 +198,20 @@ $("generate").addEventListener("click", () => {
         error.style.display = "block"
     }
 })
+
+$("copy").onclick = async () => {
+  const svg = document.querySelector("svg");
+  const svgString = new XMLSerializer().serializeToString(svg);
+  await navigator.clipboard.writeText(svg.outerHTML);
+};
+
+$("download").onclick = async () => {
+  const svg = document.querySelector("svg");
+    const blob = new Blob([svg], { type: "image/svg+xml" })
+    const a = Object.assign(document.createElement("a"), {
+        href: URL.createObjectURL(blob),
+        download: "terminal.svg",
+    })
+    a.click()
+    URL.revokeObjectURL(a.href)
+}
